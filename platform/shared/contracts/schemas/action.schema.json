@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectorstryke.local/schemas/action.schema.json",
+  "title": "VS Action",
+  "description": "An action to take or already taken. schema_version 1.0.0",
+  "type": "object",
+  "required": ["schema_version", "id", "ts", "kind", "result"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "ts": { "type": "string", "minLength": 1 },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "isolate_process", "quarantine_file", "block_network", "kill_session",
+        "harden_usb", "harden_drive", "door_signal", "alert", "playbook_step",
+        "step_up_auth", "observe"
+      ]
+    },
+    "target": { "type": "object", "additionalProperties": true },
+    "result": {
+      "type": "string",
+      "enum": ["success", "denied", "failed", "pending"]
+    },
+    "evidence_id": { "type": ["string", "null"] }
+  }
+}

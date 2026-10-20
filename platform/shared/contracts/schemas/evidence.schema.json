@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectorstryke.local/schemas/evidence.schema.json",
+  "title": "VS Evidence Record",
+  "description": "Durable record of a decision. schema_version 1.0.0",
+  "type": "object",
+  "required": ["schema_version", "id", "ts", "vectors", "score", "impact_class", "decision", "actions", "integrity"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "ts": { "type": "string", "minLength": 1 },
+    "vectors": { "type": "array", "items": { "type": "string" } },
+    "score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "impact_class": { "type": "boolean" },
+    "decision": {
+      "type": "string",
+      "enum": ["observe", "auto_act", "approve", "force_approval", "deny"]
+    },
+    "actions": { "type": "array", "items": { "type": "object" } },
+    "integrity": {
+      "type": "object",
+      "required": ["hash_alg", "hash"],
+      "properties": {
+        "hash_alg": { "type": "string", "minLength": 1 },
+        "hash": { "type": "string", "minLength": 1 }
+      }
+    },
+    "export_labels": { "type": "array", "items": { "type": "string" } },
+    "event_ids": { "type": "array", "items": { "type": "string" } }
+  }
+}
