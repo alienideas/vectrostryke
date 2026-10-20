@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "id": "evd-001",
+  "ts": "2026-10-20T10:00:02Z",
+  "vectors": ["lolbin"],
+  "score": 75,
+  "impact_class": false,
+  "decision": "auto_act",
+  "actions": [{ "id": "act-001", "kind": "isolate_process", "result": "success" }],
+  "integrity": { "hash_alg": "sha256", "hash": "abc123deadbeef" },
+  "export_labels": ["ocsf:security_finding"],
+  "event_ids": ["evt-001"]
+}

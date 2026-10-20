@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "id": "evt-001",
+  "ts": "2026-10-20T10:00:00Z",
+  "type": "process",
+  "subject": { "device": "dev-1", "user": "alice", "process": "powershell.exe" },
+  "object": { "cmd": "EncodeCommand" },
+  "attrs": { "parent": "explorer.exe" },
+  "geo_ip": null,
+  "last_logon_age_sec": 3600,
+  "mitm_indicators": [],
+  "technique_ids": ["T1059.001"]
+}

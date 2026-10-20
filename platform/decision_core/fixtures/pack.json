@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-default",
+  "version": "0.1.0",
+  "signature": {
+    "alg": "ed25519-dev",
+    "value": "DEV_SIGNATURE_PLACEHOLDER_NOT_FOR_PROD"
+  },
+  "rules": [
+    {
+      "id": "r-lolbin",
+      "match": { "type": "process", "technique_ids": ["T1059.001"] },
+      "vector": "lolbin",
+      "weight": 40
+    },
+    {
+      "id": "r-ransom",
+      "match": { "type": "file" },
+      "vector": "ransomware_prep",
+      "weight": 50,
+      "impact": true
+    },
+    {
+      "id": "r-deception",
+      "match": { "type": "deception" },
+      "vector": "deception",
+      "weight": 40
+    },
+    {
+      "id": "r-itdr",
+      "match": { "type": "itdr" },
+      "vector": "credential_abuse",
+      "weight": 35
+    }
+  ],
+  "thresholds": { "observe_max": 30, "auto_act_min": 70 },
+  "location_windows": [],
+  "hardening": { "usb_storage": "deny" },
+  "playbooks": [
+    { "id": "pb-lolbin", "vectors": ["lolbin"], "steps": ["isolate_process", "alert"] },
+    { "id": "pb-ransom", "vectors": ["ransomware_prep"], "steps": ["isolate_process", "quarantine_file", "alert"] },
+    { "id": "pb-deception", "vectors": ["deception"], "steps": ["isolate_process", "kill_session", "alert"] }
+  ],
+  "approval": { "impact_force": true, "timeout_sec": 1, "fallback": "auto_act" }
+}
