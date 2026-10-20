@@ -1,7 +1,8 @@
 # Team access — vectrostryke
 
 **Repository:** https://github.com/alienideas/vectrostryke  
-**Visibility:** Public
+**Visibility:** Public  
+**Default branch:** `main`
 
 ## Clone
 
@@ -10,20 +11,40 @@ git clone https://github.com/alienideas/vectrostryke.git
 cd vectrostryke
 ```
 
-## Status of this import
+## What is on GitHub now
 
-This repo was created from the VectorStryke Grok project workspace and seeded via the GitHub API.
+### Root
+README, VERSION, .gitignore, CONTRIBUTING, PLATFORM_STRUCTURE, TEAM_ACCESS
 
-- **Present:** README, VERSION, CONTRIBUTING, platform stubs, ASG core (config, models, scoring, geo, protocol, RBL, rate), release notes pointers.
-- **May still be incomplete vs full local tree:** full `platform/phase4–11`, full `AR/Windows` modules, `AV`/`BK`/`Core` full sources, PDFs, large data.
+### AR
+- Linux **phase2**: `agent/collect.py`, `act.py`, `agent.py`, README
+- Linux **phase3**: README, PHASE3_STATUS
+- macOS README
 
-If you need the **complete** local tree immediately, sync from the project Drive/SharePoint `artifacts` folder or ask the maintainer to finish bulk push / `git push` from a machine with the full checkout.
+### AS
+- config, models, scoring, geo, protocol auth, RBL, rate limiter
+- content analyzer, rest adapter
 
-## Python tests (when sources present)
+### Platform
+- contracts/decision_core status READMEs, hostinfo
+
+## Still missing vs full local tree (~400 files)
+
+`decision_core.py`, contract schemas/validators, phases 4–11, AR Windows/vs_core, AV/BK/Core, release packaging, many AS files (pipeline engine, http server, tests).
+
+## Finish 100% (recommended)
+
+On a machine with the **full** project folder:
 
 ```bash
-python3 platform/shared/contracts/tests/test_contracts.py
-python3 AS/tests/test_asg.py
+cd /path/to/artifacts
+git init && git branch -M main
+git remote add origin https://github.com/alienideas/vectrostryke.git
+git fetch origin
+git add .
+git commit -m "Complete VectorStryke tree v1.0.0"
+git pull origin main --allow-unrelated-histories
+git push -u origin main
 ```
 
 © VectorStryke
