@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vectorstryke.local/schemas/event.schema.json",
+  "title": "VS Event",
+  "description": "Something that happened on a protected device. schema_version 1.0.0",
+  "type": "object",
+  "required": ["schema_version", "id", "ts", "type", "subject"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "ts": { "type": "string", "minLength": 1 },
+    "type": {
+      "type": "string",
+      "enum": [
+        "process", "file", "network", "auth", "media", "posture",
+        "itdr", "deception", "ot", "mail", "mitm", "location", "health", "other"
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "device": { "type": "string" },
+        "user": { "type": "string" },
+        "process": { "type": "string" }
+      }
+    },
+    "object": { "type": "object", "additionalProperties": true },
+    "attrs": { "type": "object", "additionalProperties": true },
+    "geo_ip": { "type": ["string", "null"] },
+    "last_logon_age_sec": { "type": ["integer", "null"], "minimum": 0 },
+    "mitm_indicators": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "technique_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
