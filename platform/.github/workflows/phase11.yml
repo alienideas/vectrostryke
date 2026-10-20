@@ -1,0 +1,28 @@
+name: phase11-scale-harden
+
+on:
+  push:
+    paths:
+      - "platform/**"
+  pull_request:
+    paths:
+      - "platform/**"
+
+jobs:
+  phase11-unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 platform/phase11/tests/test_phase11.py
+  full-gates:
+    runs-on: ubuntu-latest
+    needs: phase11-unit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 platform/phase11/scripts/run_all_gates.py

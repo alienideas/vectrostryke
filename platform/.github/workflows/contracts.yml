@@ -1,0 +1,32 @@
+name: contracts
+
+on:
+  push:
+    paths:
+      - "platform/shared/contracts/**"
+      - "platform/shared/policy-packs/**"
+      - ".github/workflows/contracts.yml"
+  pull_request:
+    paths:
+      - "platform/shared/contracts/**"
+      - "platform/shared/policy-packs/**"
+
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: platform/shared/contracts
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run contract unit tests
+        run: python3 tests/test_contracts.py
+      - name: Validate golden fixtures via CLI
+        run: |
+          python3 src/validate.py event fixtures/event.valid.json
+          python3 src/validate.py action fixtures/action.valid.json
+          python3 src/validate.py policy_pack fixtures/policy_pack.valid.json
+          python3 src/validate.py evidence fixtures/evidence.valid.json
