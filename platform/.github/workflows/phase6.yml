@@ -1,0 +1,21 @@
+name: phase6-deception-mitm
+
+on:
+  push:
+    paths:
+      - "platform/phase6/**"
+      - "platform/phase4/**"
+      - "platform/decision_core/**"
+  pull_request:
+    paths:
+      - "platform/phase6/**"
+
+jobs:
+  phase6-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 platform/phase6/tests/test_phase6.py

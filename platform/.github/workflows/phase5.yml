@@ -1,0 +1,22 @@
+name: phase5-itdr-location
+
+on:
+  push:
+    paths:
+      - "platform/phase5/**"
+      - "platform/phase4/**"
+      - "platform/decision_core/**"
+      - "platform/shared/contracts/**"
+  pull_request:
+    paths:
+      - "platform/phase5/**"
+
+jobs:
+  phase5-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 platform/phase5/tests/test_phase5.py

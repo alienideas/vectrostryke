@@ -1,0 +1,22 @@
+name: phase8-modules
+
+on:
+  push:
+    paths:
+      - "platform/phase8/**"
+      - "platform/phase7/**"
+      - "platform/phase4/**"
+      - "platform/decision_core/**"
+  pull_request:
+    paths:
+      - "platform/phase8/**"
+
+jobs:
+  phase8-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 platform/phase8/tests/test_phase8.py

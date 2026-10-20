@@ -1,0 +1,25 @@
+name: phase4-integrity
+
+on:
+  push:
+    paths:
+      - "platform/phase4/**"
+      - "platform/decision_core/**"
+      - "platform/shared/contracts/**"
+  pull_request:
+    paths:
+      - "platform/phase4/**"
+      - "platform/decision_core/**"
+      - "platform/shared/contracts/**"
+
+jobs:
+  phase4-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 platform/shared/contracts/tests/test_contracts.py
+      - run: python3 platform/decision_core/tests/test_decision_core.py
+      - run: python3 platform/phase4/tests/test_phase4.py
