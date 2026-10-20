@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+*.dev.key
+**/keys/*.key
+!**/keys/.gitkeep
+
+# Build / IDE
+build/
+dist/
+.idea/
+.vscode/
+*.user
+.DS_Store
+Thumbs.db
+
+# Logs & local data
+*.log
+**/logs/
+**/data/evidence/
+**/data/quarantine/
+**/data/pending/
+AR/Linux/phase2/data/evidence/
+AR/Linux/phase2/data/quarantine/
+AR/Linux/phase3/data/
+AS/data/models/bayes_model.json
+
+# CMake / C
+**/CMakeCache.txt
+**/CMakeFiles/
+**/cmake-build-*/
+
+# Secrets
+**/platform.production.env
+**/*.pem
+**/secrets/
