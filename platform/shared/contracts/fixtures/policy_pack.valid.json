@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-default",
+  "version": "0.1.0",
+  "signature": { "alg": "ed25519-dev", "value": "DEV_SIGNATURE_PLACEHOLDER_NOT_FOR_PROD" },
+  "rules": [
+    { "id": "r1", "match": { "type": "process" }, "vector": "lolbin", "weight": 40 }
+  ],
+  "thresholds": { "observe_max": 30, "auto_act_min": 70 },
+  "location_windows": [],
+  "hardening": { "usb_storage": "deny" },
+  "playbooks": [
+    { "id": "pb-ransom", "steps": ["isolate_process", "alert"] }
+  ],
+  "approval": { "impact_force": true, "timeout_sec": 600, "fallback": "auto_act" }
+}
