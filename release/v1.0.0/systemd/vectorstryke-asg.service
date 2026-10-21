@@ -1,0 +1,20 @@
+[Unit]
+Description=VectorStryke Anti-Spam Gateway (ASG)
+After=network.target
+
+[Service]
+Type=simple
+User=vectorstryke
+Group=vectorstryke
+WorkingDirectory=/opt/vectorstryke/AS
+EnvironmentFile=-/etc/vectorstryke/platform.production.env
+ExecStart=/usr/bin/python3 /opt/vectorstryke/AS/linux/asg/adapters/http_server.py --config /etc/vectorstryke/asg.production.json --root /opt/vectorstryke/AS
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/vectorstryke/AS/data /var/log/vectorstryke
+
+[Install]
+WantedBy=multi-user.target
