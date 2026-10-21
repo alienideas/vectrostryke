@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-phase6",
+  "version": "0.4.0",
+  "signature": {
+    "alg": "hmac-sha256-dev",
+    "value": "898ab8d72b5235fd34cc3b19e0f59d9d18fdcbb97cd65f4243e9bdf67e905e6e"
+  },
+  "rules": [
+    {"id": "r-deception", "match": {"type": "deception"}, "vector": "deception", "weight": 50},
+    {"id": "r-mitm", "match": {"type": "mitm"}, "vector": "network_mitm", "weight": 45, "impact": true}
+  ],
+  "thresholds": {"observe_max": 20, "auto_act_min": 60},
+  "location_windows": [],
+  "hardening": {},
+  "playbooks": [
+    {"id": "pb-deception", "vectors": ["deception"], "steps": ["isolate_process", "kill_session", "alert"]},
+    {"id": "pb-mitm", "vectors": ["network_mitm"], "steps": ["block_network", "alert"]}
+  ],
+  "approval": {"impact_force": true, "timeout_sec": 300, "fallback": "auto_act"}
+}

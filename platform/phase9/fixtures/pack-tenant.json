@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-tenant",
+  "version": "0.1.0",
+  "signature": {"alg": "hmac-sha256-dev", "value": "DEV_SIGNATURE_PLACEHOLDER_NOT_FOR_PROD"},
+  "rules": [],
+  "thresholds": {"observe_max": 30, "auto_act_min": 70},
+  "approval": {"impact_force": true, "timeout_sec": 600, "fallback": "observe"}
+}
