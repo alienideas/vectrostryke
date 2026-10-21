@@ -1,7 +1,8 @@
-"""Pending approval queue — Manual mode never auto-acts on timeout."""
+"""Approval workflow — Manual mode only uses pending queue."""
 from __future__ import annotations
 
 import json
+import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -12,12 +13,12 @@ def _utc() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-class ApprovalQueue(Component):
+class ApprovalManager(Component):
     def _alert_path(self, alert_id: str) -> Path:
         return self._paths.alert_dir / f"{alert_id}.json"
 
     def submit(self, finding: dict, timeout_sec: int = 300) -> str:
-        alert_id = finding.get("id") or f"alert-{int(datetime.now().timestamp())}"
+        alert_id = os.urandom(6).hex()
         expires = (datetime.now(timezone.utc) + timedelta(seconds=timeout_sec)).strftime("%Y-%m-%dT%H:%M:%SZ")
         package = {
             "AlertId": alert_id,
