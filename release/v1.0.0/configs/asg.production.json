@@ -1,0 +1,31 @@
+{
+  "thresholds": {"accept_max": 35, "quarantine_max": 65},
+  "weights": {
+    "geo": 100,
+    "spf_fail": 30,
+    "dkim_fail": 25,
+    "dmarc_fail": 30,
+    "rbl_hit": 45,
+    "phishing_heuristic": 40,
+    "bayes_spam": 35,
+    "rate_limit": 25
+  },
+  "lists": {
+    "rbl_enabled": true,
+    "offline_demo": false
+  },
+  "behavioral": {
+    "max_messages_per_minute": 60,
+    "greylist_enabled": false
+  },
+  "cidr_file": "data/cidr/blocklist.txt",
+  "model_file": "data/models/bayes_model.json",
+  "listen": {
+    "rest_host": "127.0.0.1",
+    "rest_port": 8787
+  },
+  "logging": {
+    "level": "INFO",
+    "json": true
+  }
+}
