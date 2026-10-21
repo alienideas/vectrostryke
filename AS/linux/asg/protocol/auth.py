@@ -1,7 +1,6 @@
 """SPF / DKIM / DMARC evaluation (stdlib best-effort; offline-safe heuristics)."""
 from __future__ import annotations
 
-import re
 from typing import Dict, Tuple
 
 
