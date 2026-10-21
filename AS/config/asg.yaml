@@ -1,0 +1,20 @@
+thresholds:
+  accept_max: 40
+  quarantine_max: 70
+weights:
+  geo: 100
+  spf_fail: 25
+  dkim_fail: 20
+  dmarc_fail: 25
+  rbl_hit: 40
+  phishing_heuristic: 35
+  bayes_spam: 30
+  rate_limit: 20
+lists:
+  rbl_enabled: true
+  offline_demo: true
+behavioral:
+  max_messages_per_minute: 30
+  greylist_enabled: false
+cidr_file: data/cidr/blocklist.txt
+model_file: data/models/bayes_model.json

@@ -1,3 +1,2 @@
-# ASG CIDR block list — uncommented lines are blocked
-# 203.0.113.0/24  documentation range example
+# ASG CIDR block list
 198.51.100.0/24
