@@ -1,4 +1,4 @@
-"""Quarantine with openssl AES if available, else isolate copy."""
+"""Quarantine with openssl AES when available; copy fallback otherwise."""
 from __future__ import annotations
 
 import hashlib
@@ -46,7 +46,7 @@ class VSQuarantine:
                 subprocess.run(cmd, check=True, capture_output=True)
             else:
                 shutil.copy2(fi.full_name, dest)
-                (dest.with_suffix(".keymeta")).write_text(json.dumps({"iv": iv, "note": "copy-fallback"}))
+                dest.with_suffix(".keymeta").write_text(json.dumps({"iv": iv, "note": "copy-fallback"}))
 
             entry = {
                 "Id": guid,
@@ -74,7 +74,24 @@ class VSQuarantine:
                     fi.action_taken = "SkippedProtected"
                     continue
                 self.add(fi)
+        self._write_review_html(candidates)
 
     def _is_protected(self, path: str) -> bool:
         protected = ("/usr/", "/bin/", "/sbin/", "/lib/", "/lib64/", "/boot/", "/etc/")
         return any(path.startswith(p) for p in protected)
+
+    def _write_review_html(self, items: List[VSFileInfo]) -> None:
+        rows = []
+        for fi in items:
+            rows.append(
+                f"<tr><td>{fi.full_name}</td><td>{fi.score}</td>"
+                f"<td>{fi.classification}</td><td><code>{fi.hash_sha256 or ''}</code></td>"
+                f"<td>{fi.action_taken}</td></tr>"
+            )
+        html = f"""<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>VectorStryke AV – Quarantine Review</title></head>
+<body><h1>Quarantine Review</h1><p>Run {self.ctx.run_id}</p>
+<table><tr><th>Path</th><th>Score</th><th>Class</th><th>SHA-256</th><th>Action</th></tr>
+{''.join(rows)}</table></body></html>"""
+        out = Path(self.ctx.config.report_path) / f"QuarantineReview_{datetime.now().strftime('%Y%m%d_%H%M%S')}.html"
+        out.write_text(html, encoding="utf-8")
