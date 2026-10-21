@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import List, Tuple
 
 
-def load_cidrs(path: Path) -> List[ipaddress._BaseNetwork]:
+def load_cidrs(path: Path) -> List:
     nets = []
     if not path.is_file():
         return nets

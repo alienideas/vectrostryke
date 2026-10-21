@@ -1,7 +1,7 @@
 """Reputation / RBL (offline demo + optional live stub)."""
 from __future__ import annotations
 
-from typing import List, Tuple
+from typing import Tuple
 
 DEMO_HITS = {"203.0.113.50", "198.51.100.10"}
 

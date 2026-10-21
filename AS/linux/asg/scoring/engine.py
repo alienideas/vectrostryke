@@ -1,7 +1,7 @@
 """Weighted scoring → accept / quarantine / reject."""
 from __future__ import annotations
 
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from asg.models import FactorResult, Verdict
 
