@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-phase5",
+  "version": "0.3.0",
+  "signature": {
+    "alg": "hmac-sha256-dev",
+    "value": "9cd8e47d17750ab2f3cf9fc78256510205c10dfff0a005e12c3b7d67682f30f1"
+  },
+  "rules": [
+    {"id": "r-itdr", "match": {"type": "itdr"}, "vector": "credential_abuse", "weight": 40},
+    {"id": "r-auth", "match": {"type": "auth"}, "vector": "credential_abuse", "weight": 25},
+    {"id": "r-location", "match": {"type": "location"}, "vector": "anomalous_access", "weight": 30},
+    {"id": "r-process", "match": {"type": "process"}, "vector": "lolbin", "weight": 20}
+  ],
+  "thresholds": {"observe_max": 25, "auto_act_min": 70},
+  "location_windows": [{"start_hour": 9, "end_hour": 18}],
+  "hardening": {},
+  "playbooks": [
+    {"id": "pb-itdr", "vectors": ["credential_abuse"], "steps": ["kill_session", "step_up_auth", "alert"]},
+    {"id": "pb-loc", "vectors": ["anomalous_access"], "steps": ["alert", "step_up_auth"]}
+  ],
+  "approval": {"impact_force": true, "timeout_sec": 300, "fallback": "observe"}
+}
