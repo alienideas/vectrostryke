@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-unsigned",
+  "version": "0.0.1",
+  "signature": {"alg": "ed25519-dev", "value": "unsigned"},
+  "thresholds": {"observe_max": 30, "auto_act_min": 70},
+  "approval": {"impact_force": true, "timeout_sec": 1, "fallback": "auto_act"}
+}
