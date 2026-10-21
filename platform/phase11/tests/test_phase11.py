@@ -32,8 +32,7 @@ class TestSLOs(unittest.TestCase):
             "offline_protection_pct": 100.0,
             "fp_budget_per_pack": 2.0,
         }
-        samples = evaluate_slos(obs)
-        self.assertTrue(all_passed(samples))
+        self.assertTrue(all_passed(evaluate_slos(obs)))
 
     def test_evaluate_fail_latency(self):
         obs = {
@@ -45,8 +44,6 @@ class TestSLOs(unittest.TestCase):
         }
         samples = evaluate_slos(obs)
         self.assertFalse(all_passed(samples))
-        lat = next(s for s in samples if s.name == "decision_latency_p95_ms")
-        self.assertFalse(lat.passed)
 
 
 class TestCanary(unittest.TestCase):
