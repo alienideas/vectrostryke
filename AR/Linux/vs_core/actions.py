@@ -63,5 +63,5 @@ class SoftContainResponder(Responder):
             self.log_warn(f"Soft-containment SIGSTOP pid={pid}")
             return True
         except Exception as e:
-            self.log_error(f"Soft-containment failed: {e}")
+            self.log_error(f"Soft-contain failed: {e}")
             return False
