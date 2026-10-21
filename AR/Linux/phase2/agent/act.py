@@ -5,9 +5,7 @@ import json
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List
-
-SCHEMA = "1.0.0"
+from typing import Dict, List
 
 
 class ActExecutor:
@@ -29,10 +27,10 @@ class ActExecutor:
             out = dict(action)
             try:
                 if kind == "alert":
-                    self._log(f"ALERT event={event.get('id')} vectors_ctx=act")
+                    self._log(f"ALERT event={event.get('id')}")
                     out["result"] = "success"
                 elif kind == "isolate_process":
-                    self._log(f"ISOLATE_PROCESS event={event.get('id')} target={action.get('target')}")
+                    self._log(f"ISOLATE_PROCESS event={event.get('id')}")
                     out["result"] = "success"
                     out["target"] = {**(action.get("target") or {}), "isolated": True, "mode": "logical"}
                 elif kind == "quarantine_file":
@@ -40,31 +38,20 @@ class ActExecutor:
                     if path and Path(path).is_file():
                         dest = self.quarantine_dir / Path(path).name
                         shutil.copy2(path, dest)
-                        self._log(f"QUARANTINE copied {path} -> {dest}")
                         out["result"] = "success"
                         out["target"] = {"path": path, "quarantine": str(dest)}
                     else:
                         marker = self.quarantine_dir / f"quar_{event.get('id', 'unknown')}.json"
                         marker.write_text(json.dumps({"event": event.get("id"), "object": event.get("object")}), encoding="utf-8")
-                        self._log(f"QUARANTINE marker {marker}")
                         out["result"] = "success"
                         out["target"] = {"marker": str(marker)}
-                elif kind == "block_network":
-                    self._log(f"BLOCK_NETWORK event={event.get('id')} (logical)")
-                    out["result"] = "success"
-                elif kind == "kill_session":
-                    self._log(f"KILL_SESSION event={event.get('id')} (logical)")
-                    out["result"] = "success"
-                elif kind in ("harden_usb", "harden_drive"):
-                    self._log(f"HARDEN {kind} event={event.get('id')}")
-                    out["result"] = "success"
-                elif kind == "observe":
+                elif kind in ("block_network", "kill_session", "harden_usb", "harden_drive", "observe"):
+                    self._log(f"{kind} event={event.get('id')}")
                     out["result"] = "success"
                 else:
                     self._log(f"ACTION {kind} event={event.get('id')}")
                     out["result"] = "success"
             except Exception as e:
-                self._log(f"FAIL {kind}: {e}")
                 out["result"] = "failed"
                 out["error"] = str(e)
             results.append(out)

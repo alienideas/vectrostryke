@@ -5,7 +5,7 @@ import os
 import socket
 import uuid
 from datetime import datetime, timezone
-from typing import Any, Iterator, List
+from typing import List
 
 SCHEMA = "1.0.0"
 
@@ -41,7 +41,6 @@ def make_event(
 
 
 def collect_scenario(name: str) -> List[dict]:
-    """Deterministic scenarios for E2E tests (no root required)."""
     host = socket.gethostname()
     if name == "lolbin":
         return [make_event(
@@ -70,18 +69,9 @@ def collect_scenario(name: str) -> List[dict]:
 
 
 def collect_live_snapshot() -> List[dict]:
-    """Lightweight live signals (best-effort, no privileges required)."""
-    events: List[dict] = []
     host = socket.gethostname()
-    events.append(make_event(
+    return [make_event(
         "process",
         subject={"device": host, "user": os.environ.get("USER", "unknown"), "process": "phase2-agent"},
-        object_={"note": "heartbeat_process"},
-        attrs={"source": "live_snapshot"},
-    ))
-    events.append(make_event(
-        "health",
-        subject={"device": host},
-        object_={"agent": "ar-linux-phase2", "status": "running"},
-    ))
-    return events
+        object_={"note": "live_snapshot"},
+    )]
