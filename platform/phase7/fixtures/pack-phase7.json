@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-phase7",
+  "version": "0.5.0",
+  "signature": {
+    "alg": "hmac-sha256-dev",
+    "value": "0a3c7604788e88a90e0183998d5fc5d17056622e8e89af8976e72eabe13baf1f"
+  },
+  "rules": [
+    {"id": "r-lolbin", "match": {"type": "process", "technique_ids": ["T1059.001"]}, "vector": "lolbin", "weight": 45},
+    {"id": "r-deception", "match": {"type": "deception"}, "vector": "deception", "weight": 55},
+    {"id": "r-file", "match": {"type": "file"}, "vector": "ransomware_prep", "weight": 50, "impact": true}
+  ],
+  "thresholds": {"observe_max": 25, "auto_act_min": 40},
+  "playbooks": [
+    {"id": "pb-lolbin", "vectors": ["lolbin"], "steps": ["isolate_process", "alert"]},
+    {"id": "pb-ransom", "vectors": ["ransomware_prep"], "steps": ["isolate_process", "quarantine_file", "alert"]},
+    {"id": "pb-deception", "vectors": ["deception"], "steps": ["isolate_process", "kill_session", "block_network", "alert"]}
+  ],
+  "approval": {"impact_force": true, "timeout_sec": 300, "fallback": "auto_act"}
+}

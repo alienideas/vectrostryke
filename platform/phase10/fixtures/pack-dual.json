@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-phase10",
+  "version": "1.0.0",
+  "signature": {
+    "alg": "hmac-sha256-dev",
+    "value": "28b6b751a8855e495acce2f327ab2ccb477a9461a781baf6c932943af8899be7"
+  },
+  "rules": [
+    {"id": "r-ot", "match": {"type": "ot"}, "vector": "ot_anomaly", "weight": 40},
+    {"id": "r-process", "match": {"type": "process"}, "vector": "lolbin", "weight": 40}
+  ],
+  "thresholds": {"observe_max": 25, "auto_act_min": 50},
+  "playbooks": [
+    {"id": "pb-ot", "vectors": ["ot_anomaly"], "steps": ["alert", "isolate_process"]}
+  ],
+  "hardening": {"requires_enclave": false},
+  "approval": {"impact_force": true, "timeout_sec": 300, "fallback": "observe"},
+  "signatures": [
+    {"alg": "hmac-sha256-dev", "value": "28b6b751a8855e495acce2f327ab2ccb477a9461a781baf6c932943af8899be7"},
+    {"alg": "hmac-sha3-256-pqc-sim", "value": "cf672a84ade4b7fe453fa39482e58700c68598d417112eb38284266ba38a4f4e"}
+  ]
+}

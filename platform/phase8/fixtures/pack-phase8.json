@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "id": "pack-phase8",
+  "version": "0.6.0",
+  "signature": {
+    "alg": "hmac-sha256-dev",
+    "value": "f2739798935872ccbaa88d6b4efc03985540bb8a25b6757ffdc4eb1211ae2446"
+  },
+  "rules": [
+    {"id": "r-file-mal", "match": {"type": "file"}, "vector": "malware", "weight": 50},
+    {"id": "r-process", "match": {"type": "process"}, "vector": "lolbin", "weight": 45},
+    {"id": "r-mail", "match": {"type": "mail"}, "vector": "phishing", "weight": 50},
+    {"id": "r-health", "match": {"type": "health"}, "vector": "unknown", "weight": 0}
+  ],
+  "thresholds": {"observe_max": 20, "auto_act_min": 40},
+  "playbooks": [
+    {"id": "pb-malware", "vectors": ["malware"], "steps": ["quarantine_file", "alert"]},
+    {"id": "pb-lolbin", "vectors": ["lolbin"], "steps": ["isolate_process", "alert"]},
+    {"id": "pb-phish", "vectors": ["phishing"], "steps": ["alert", "block_network"]}
+  ],
+  "approval": {"impact_force": false, "timeout_sec": 300, "fallback": "auto_act"}
+}
