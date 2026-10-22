@@ -36,8 +36,7 @@ int vsbk_mkdir_p(const char *path) {
   for (char *p = tmp + 1; *p; p++) {
     if (*p == '/' || *p == '\\') {
       *p = '\0';
-      if (mkdir(tmp, 0755) != 0 && errno != EEXIST) {
-      }
+      if (mkdir(tmp, 0755) != 0 && errno != EEXIST) { }
       *p = VSBK_PATH_SEP;
     }
   }
