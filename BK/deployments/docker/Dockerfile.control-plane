@@ -1,0 +1,5 @@
+FROM alpine:3.20
+WORKDIR /app
+COPY bin/control-plane /app/control-plane
+EXPOSE 8080
+ENTRYPOINT ["/app/control-plane"]
