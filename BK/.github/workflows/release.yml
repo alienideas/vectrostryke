@@ -1,0 +1,16 @@
+name: BK Release
+on:
+  push:
+    tags: ['bk-v*']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: BK
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          sudo apt-get update && sudo apt-get install -y cmake build-essential
+          mkdir -p build && cd build && cmake .. && make -j2

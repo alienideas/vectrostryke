@@ -1,0 +1,15 @@
+name: BK Security
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+jobs:
+  codeql:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder security gate
+        run: echo "Add CodeQL / dependency scan for BK C agent"

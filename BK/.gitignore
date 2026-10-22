@@ -1,0 +1,16 @@
+# VectorStrykeBK
+/build/
+/bin/
+/dist/
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,20 @@
+name: BK CI
+on:
+  push:
+    paths: ['BK/**', '.github/workflows/ci.yml']
+  pull_request:
+    paths: ['BK/**']
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: BK
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install deps
+        run: sudo apt-get update && sudo apt-get install -y cmake build-essential
+      - name: CI
+        run: |
+          chmod +x scripts/ci/*.sh || true
+          if [ -x scripts/ci/run_all.sh ]; then ./scripts/ci/run_all.sh; else echo "scripts pending"; fi

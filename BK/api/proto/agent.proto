@@ -1,0 +1,32 @@
+syntax = "proto3";
+package vectorstryke.bk.v1;
+
+// Complementary backup agent contract (quarantine-aware)
+service AgentService {
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  rpc ReportBackup(BackupReport) returns (Ack);
+}
+
+message HeartbeatRequest {
+  string agent_id = 1;
+  string host = 2;
+  string version = 3;
+}
+
+message HeartbeatResponse {
+  bool ok = 1;
+  string policy_version = 2;
+}
+
+message BackupReport {
+  string agent_id = 1;
+  string job_id = 2;
+  int64 bytes = 3;
+  bool success = 4;
+  string error = 5;
+}
+
+message Ack {
+  bool ok = 1;
+  string message = 2;
+}
