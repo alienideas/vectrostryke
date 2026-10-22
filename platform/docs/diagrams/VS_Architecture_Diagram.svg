@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="420" viewBox="0 0 920 420">
+  <rect width="920" height="420" fill="#0f172a"/>
+  <text x="460" y="36" text-anchor="middle" fill="#e2e8f0" font-family="Segoe UI,Arial" font-size="20" font-weight="700">VectorStryke — Universal Security Platform</text>
+  <text x="460" y="58" text-anchor="middle" fill="#94a3b8" font-family="Segoe UI,Arial" font-size="12">Sense → Decide → Act · Offline-first · Contract-first</text>
+  <rect x="60" y="80" width="800" height="48" rx="8" fill="#1e3a5f" stroke="#38bdf8"/>
+  <text x="460" y="110" text-anchor="middle" fill="#e0f2fe" font-family="Segoe UI,Arial" font-size="14">Operator Surface · Approvals · Status</text>
+  <rect x="60" y="145" width="800" height="48" rx="8" fill="#1e293b" stroke="#64748b"/>
+  <text x="460" y="175" text-anchor="middle" fill="#cbd5e1" font-family="Segoe UI,Arial" font-size="14">Control Plane (optional) · Policy · Multi-tenant</text>
+  <rect x="60" y="210" width="800" height="56" rx="8" fill="#0c4a6e" stroke="#22d3ee"/>
+  <text x="460" y="245" text-anchor="middle" fill="#cffafe" font-family="Segoe UI,Arial" font-size="15" font-weight="600">Decision Core · Contracts · Policy Packs</text>
+  <g font-family="Segoe UI,Arial" font-size="13" fill="#f8fafc">
+    <rect x="60" y="290" width="140" height="50" rx="6" fill="#14532d" stroke="#4ade80"/><text x="130" y="320" text-anchor="middle">AR</text>
+    <rect x="220" y="290" width="140" height="50" rx="6" fill="#1e3a8a" stroke="#60a5fa"/><text x="290" y="320" text-anchor="middle">AV</text>
+    <rect x="380" y="290" width="140" height="50" rx="6" fill="#4c1d95" stroke="#c084fc"/><text x="450" y="320" text-anchor="middle">Core</text>
+    <rect x="540" y="290" width="140" height="50" rx="6" fill="#7c2d12" stroke="#fb923c"/><text x="610" y="320" text-anchor="middle">BK</text>
+    <rect x="700" y="290" width="140" height="50" rx="6" fill="#831843" stroke="#f472b6"/><text x="770" y="320" text-anchor="middle">AS</text>
+  </g>
+  <text x="460" y="380" text-anchor="middle" fill="#64748b" font-family="Segoe UI,Arial" font-size="11">© VectorStryke · Confidential · @VectorStryke</text>
+</svg>
