@@ -16,7 +16,7 @@ Modular protection: **AR** (anti-ransomware), **AV**, **BK** (backup), **Core** 
 
 Authoritative algorithm/architecture **PDFs** live in the private repo  
 [`alienideas/vectrostryke-docs`](https://github.com/alienideas/vectrostryke-docs) (collaborators only).  
-PDFs are AES-256 password-protected (password rule documented in that repo’s `ACCESS.md`).
+PDFs are AES-256 password-protected.
 
 ## Layout
 
