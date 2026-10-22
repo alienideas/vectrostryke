@@ -1,0 +1,5 @@
+{
+  "pack_id": "pack-phase4",
+  "version": "1.0.0",
+  "signature": {"alg": "HMAC-SHA256", "value": "signed-demo"}
+}

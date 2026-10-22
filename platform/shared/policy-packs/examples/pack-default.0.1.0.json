@@ -1,0 +1,9 @@
+{
+  "pack_id": "pack-default",
+  "version": "0.1.0",
+  "tenant_id": "default",
+  "policies": [
+    {"name": "ransom_high", "min_score": 80, "action": "quarantine"}
+  ],
+  "signature": {"alg": "HMAC-SHA256", "value": "demo"}
+}
