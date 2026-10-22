@@ -1,8 +1,7 @@
 #ifndef VSBK_SAL_H
 #define VSBK_SAL_H
 
-#include <stddef.h>
-#include <stdio.h>
+#include "vsbk/common.h"
 
 typedef struct vsbk_storage vsbk_storage_t;
 
