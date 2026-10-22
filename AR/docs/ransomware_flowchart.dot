@@ -1,0 +1,5 @@
+digraph RansomFlow {
+  rankdir=LR;
+  Detect -> Decide -> Act -> Recover;
+  label="© VectorStryke";
+}
