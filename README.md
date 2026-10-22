@@ -1,3 +1,5 @@
+![VectorStryke Architecture](docs/VS_Architecture_Diagram.svg)
+
 # VectorStryke Security Platform
 
 **Version: 1.0.0** — see `VERSION` and `release/v1.0.0/`
@@ -10,6 +12,12 @@ Modular protection: **AR** (anti-ransomware), **AV**, **BK** (backup), **Core** 
 2. `release/v1.0.0/PRODUCTION_READINESS.md` — what is production-ready  
 3. `platform/docs/onboarding/Developer_Onboarding_Guide.md` — Git / CI / Agile  
 
+## Formal PDF specifications (private)
+
+Authoritative algorithm/architecture **PDFs** live in the private repo  
+[`alienideas/vectrostryke-docs`](https://github.com/alienideas/vectrostryke-docs) (collaborators only).  
+PDFs are AES-256 password-protected (password rule documented in that repo’s `ACCESS.md`).
+
 ## Layout
 
 | Path | Role |
@@ -17,5 +25,6 @@ Modular protection: **AR** (anti-ransomware), **AV**, **BK** (backup), **Core** 
 | `platform/` | Contracts, Decision Core, phases 4–11 |
 | `AR/` `AV/` `BK/` `Core/` `AS/` | Product modules |
 | `release/v1.0.0/` | Production packaging |
+| `docs/VS_Architecture_Diagram.svg` | High-level architecture diagram |
 
 © VectorStryke
