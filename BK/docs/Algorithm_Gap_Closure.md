@@ -1,5 +1,12 @@
 # BK Algorithm Gap Closure (G1–G6)
 
-Maps competitive gaps to modules: immutability, embedded agent, anomaly, recovery orchestration, quarantine-aware skip, control-plane sync.
+**© VectorStryke**
 
-Full detail retained in local `BK/docs/` and platform architecture docs.
+| Gap | Module |
+|-----|--------|
+| G1 Immutability | SAL object keys + manifest |
+| G2 Embedded agent | vsbk-agent C11 |
+| G3 Anomaly | Future change-detection expansion |
+| G4 Recovery orchestration | Manifest restore path |
+| G5 Quarantine-aware skip | `vsbk_is_quarantine_path` |
+| G6 Control-plane sync | Hook URL + health service |

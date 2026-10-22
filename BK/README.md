@@ -1,22 +1,11 @@
-# VectorStrykeBK (C/C++)
+# VectorStryke BK — Backup (C11)
 
-Complementary production-style automation backup for VectorStryke.
-
-- **Language:** C11 core · CMake · optional OpenSSL
-- **Platforms:** Windows · Linux · macOS
-
-## Build
+Complementary, quarantine-aware backup agent.
 
 ```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Release -DVSBK_BUILD_TESTS=ON
+cmake -B build -DVSBK_BUILD_TESTS=ON
 cmake --build build -j
-cd build && ctest --output-on-failure
-./vsbk-agent /path/to/data
+ctest --test-dir build --output-on-failure
 ```
 
-## Complementarity
-
-- Skips quarantine paths by default
-- Optional VectorStryke webhook on backup complete
-
-Apache-2.0 · © VectorStryke
+Env: `VSBK_STORAGE`, `VSBK_RESPECT_QUARANTINE`, `VECTORSTRYKE_HOOK_URL`.
