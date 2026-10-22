@@ -12,11 +12,6 @@ Modular protection: **AR** (anti-ransomware), **AV**, **BK** (backup), **Core** 
 2. `release/v1.0.0/PRODUCTION_READINESS.md` — what is production-ready  
 3. `platform/docs/onboarding/Developer_Onboarding_Guide.md` — Git / CI / Agile  
 
-## Formal PDF specifications (private)
-
-Authoritative algorithm/architecture **PDFs** live in the private repo  
-[`alienideas/vectrostryke-docs`](https://github.com/alienideas/vectrostryke-docs) (collaborators only).  
-PDFs are AES-256 password-protected.
 
 ## Layout
 
