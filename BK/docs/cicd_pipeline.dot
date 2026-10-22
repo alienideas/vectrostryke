@@ -1,0 +1,13 @@
+digraph VSBK_CICD {
+  rankdir=TB;
+  label="VectorStrykeBK CI/CD Pipeline";
+  labelloc=t;
+  PR [label="Pull Request"];
+  LINT [label="Lint & static"];
+  UNIT [label="Unit tests"];
+  BUILD [label="Build"];
+  INTEG [label="Integration"];
+  GAP [label="Gap acceptance G1-G6"];
+  REL [label="Release artifacts"];
+  PR -> LINT -> UNIT -> BUILD -> INTEG -> GAP -> REL;
+}
