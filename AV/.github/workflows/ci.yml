@@ -1,0 +1,16 @@
+name: AV CI
+on:
+  push:
+    paths: ['AV/**']
+  pull_request:
+    paths: ['AV/**']
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: |
+          chmod +x AV/ci/*.sh || true
+          if [ -x AV/ci/run_all.sh ]; then AV/ci/run_all.sh; else echo AV CI placeholder; fi
