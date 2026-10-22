@@ -35,16 +35,9 @@ It is designed to work **even offline**, so protection does not fully depend on 
 - Teams that need Windows and Linux (and some macOS/Unix support)
 - Developers building and improving the product from the GitHub code
 
-### Where the work lives
-
-- **Public code:** this repository — what developers build and review
-- **Private docs:** `vectrostryke-docs` — detailed specs/PDFs (authorized access only)
-
 ### One-line summary
 
 **VectorStryke is a modular security system that detects threats, decides what to do, and acts to contain or recover — across ransomware, malware, backup, and email — using shared rules so everything stays aligned.**
-
-Local PDF overview: `docs/VS_Simple_Overview.pdf` (also available after binary sync from the authoring workspace).
 
 ---
 
